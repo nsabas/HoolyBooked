@@ -21,6 +21,7 @@ class CreateCampusController extends AbstractController
     ) {}
 
     #[OA\Post(
+        description: 'Enregistrer un nouveau campus et ses emplacements',
         tags: ['Campus']
     )]
     #[Route('/api/campus', name: 'api_campus_create', methods: [Request::METHOD_POST])]

@@ -20,6 +20,7 @@ class PostCreateFoodTruckController extends AbstractController
     ) {}
 
     #[OA\Post(
+        description: 'Enregistrer un nouveau FoodTruck',
         tags: ['FoodTruck']
     )]
     #[Route('/api/food_trucks', name: 'api_create_food_truck', methods: [Request::METHOD_POST])]

@@ -19,6 +19,7 @@ class CreateBookingController extends AbstractController
     ) {}
 
     #[OA\Post(
+        description: 'Créer une réservation',
         tags: ['Booking']
     )]
     #[Route('/api/reservations', name: 'api_booking_create', methods: [Request::METHOD_POST])]

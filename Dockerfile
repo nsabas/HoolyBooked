@@ -1,4 +1,4 @@
-FROM php:8.2-fpm-bullseye AS symfony_php_dev
+FROM php:8.4-fpm-bullseye AS symfony_php_dev
 #ARG TIMEZONE
 
 COPY docker/php/php.ini /usr/local/etc/php/conf.d/docker-php-config.ini

@@ -25,8 +25,16 @@
             <join-column name="campus_id" referenced-column-name="id" nullable="false"/>
         </many-to-one>
 
-        <one-to-many field="bookings" target-entity="App\Domain\Model\Booking" mapped-by="slot" cascade="remove">
+        <one-to-many field="bookings" target-entity="App\Domain\Model\Booking" mapped-by="slot">
             <orphan-removal>true</orphan-removal>
+        </one-to-many>
+
+        <one-to-many field="unavailabilities" target-entity="App\Domain\Model\Unavailability" mapped-by="slot">
+            <orphan-removal>true</orphan-removal>
+            <cascade>
+                <cascade-persist/>
+                <cascade-remove/>
+            </cascade>
         </one-to-many>
     </entity>
 </doctrine-mapping>

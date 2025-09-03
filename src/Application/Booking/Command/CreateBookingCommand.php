@@ -11,10 +11,8 @@ class CreateBookingCommand
         public string $name,
         #[Assert\NotBlank]
         public string $email,
-        #[Assert\GreaterThan('now')]
+        #[Assert\GreaterThan('tomorrow')]
         public \DateTimeImmutable $startAt,
-        #[Assert\GreaterThan('now')]
-        public \DateTimeImmutable $endAt,
         #[Assert\NotBlank]
         public string $foodTruckUid,
         #[Assert\NotBlank]

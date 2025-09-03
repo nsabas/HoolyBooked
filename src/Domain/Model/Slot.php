@@ -21,9 +21,12 @@ class Slot
 
     protected Collection $bookings;
 
+    protected Collection $unavailabilities;
+
     public function __construct()
     {
         $this->bookings = new ArrayCollection();
+        $this->unavailabilities = new ArrayCollection();
     }
 
     public function getName(): string
@@ -143,5 +146,15 @@ class Slot
             $this->bookings->removeElement($booking);
         }
         return $this;
+    }
+
+    public function getUnavailabilities(): Collection
+    {
+        return $this->unavailabilities;
+    }
+
+    public function setUnavailabilities(Collection $unavailabilities): void
+    {
+        $this->unavailabilities = $unavailabilities;
     }
 }

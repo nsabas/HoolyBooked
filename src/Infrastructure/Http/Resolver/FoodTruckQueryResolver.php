@@ -17,8 +17,6 @@ class FoodTruckQueryResolver implements ValueResolverInterface
             return [];
         }
 
-        yield new ListFoodTruckQuery(
-            type: $request->query->get('type'),
-        );
+        yield new ListFoodTruckQuery();
     }
 }

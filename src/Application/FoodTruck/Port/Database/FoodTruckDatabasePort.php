@@ -12,8 +12,7 @@ interface FoodTruckDatabasePort
     public function findOneByUid(string $uid): ?FoodTruck;
 
     /**
-     * @param array $queryParams
      * @return FoodTruck[]
      */
-        public function findByType(array $queryParams): array;
+    public function findAll(): array;
 }

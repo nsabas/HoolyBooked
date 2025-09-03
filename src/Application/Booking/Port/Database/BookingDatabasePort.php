@@ -25,4 +25,6 @@ interface BookingDatabasePort
      * @return Booking[]
      */
     public function getBookingStartAt(\DateTimeImmutable $date): array;
+
+    public function hasBookingBetweenFor(FoodTruck $foodTruck, Campus $campus, \DateTimeImmutable $start, \DateTimeImmutable $end): bool;
 }

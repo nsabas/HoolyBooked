@@ -35,8 +35,8 @@ class FoodTruckRepository extends ServiceEntityRepository implements FoodTruckDa
      * @param array $queryParams
      * @return FoodTruck[]
      */
-    public function findByType(array $queryParams): array
+    public function findAll(): array
     {
-        return $this->findBy([]);
+        return $this->findAll();
     }
 }

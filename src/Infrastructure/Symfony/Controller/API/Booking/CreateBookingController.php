@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Routing\Attribute\Route;
+use OpenApi\Attributes as OA;
 
 class CreateBookingController extends AbstractController
 {
@@ -17,6 +18,9 @@ class CreateBookingController extends AbstractController
         private CreateBookingHandler $createBookingHandler
     ) {}
 
+    #[OA\Post(
+        tags: ['Booking']
+    )]
     #[Route('/api/reservations', name: 'api_booking_create', methods: [Request::METHOD_POST])]
     public function __invoke(#[MapRequestPayload] CreateBookingCommand $createBookingCommand): JsonResponse
     {

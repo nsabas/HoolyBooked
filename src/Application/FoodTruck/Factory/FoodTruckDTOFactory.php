@@ -11,6 +11,7 @@ class FoodTruckDTOFactory
     {
         return new FoodTruckOutput(
             name: $foodTruck->getName(),
+            uid: $foodTruck->getUid(),
             status: $foodTruck->getStatus(),
             description: $foodTruck->getDescription(),
             type: $foodTruck->getType()

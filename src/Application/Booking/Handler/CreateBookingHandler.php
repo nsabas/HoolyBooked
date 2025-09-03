@@ -40,7 +40,7 @@ class CreateBookingHandler
             throw new BadRequestHttpException('Slot not available for booking');
         }
 
-        if ($this->foodTruckService->isAvailableForBooking($foodTruck, $command->startAt, $command->endAt)) {
+        if (!$this->foodTruckService->isAvailableForBooking($foodTruck, $slot->getCampus(), $command->startAt, $command->startAt)) {
             throw new BadRequestHttpException('Food truck is already booked');
         }
 
@@ -50,7 +50,7 @@ class CreateBookingHandler
             ->setUid(Uuid::v4())
             ->setStatus(BookingStatusEnum::confirmed->name)
             ->setStartAt($command->startAt)
-            ->setEndAt($command->endAt)
+            ->setEndAt($command->startAt)
             ->setFoodTruck($foodTruck)
             ->setSlot($slot)
         ;

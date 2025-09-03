@@ -5,6 +5,7 @@ namespace App\Infrastructure\Doctrine\Repository;
 use App\Application\Booking\Port\Database\BookingDatabasePort;
 use App\Domain\Booking\Enum\BookingStatusEnum;
 use App\Domain\Model\Booking;
+use App\Domain\Model\Campus;
 use App\Domain\Model\FoodTruck;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -85,6 +86,27 @@ class BookingRepository extends ServiceEntityRepository implements BookingDataba
             ->setParameter('status', BookingStatusEnum::confirmed->name)
             ->getQuery()
             ->getResult()
+        ;
+    }
+
+    public function hasBookingBetweenFor(FoodTruck $foodTruck, Campus $campus, \DateTimeImmutable $start, \DateTimeImmutable $end): bool
+    {
+        return $this->createQueryBuilder('b')
+            ->select('COUNT(b.id)')
+            ->join('b.foodTruck', 'f')
+            ->join('b.slot', 's')
+            ->join('s.campus', 'c')
+            ->andWhere('c = :campus')
+            ->andWhere('b.startAt BETWEEN :start AND :end')
+            ->andWhere('f = :foodTruck')
+            ->andWhere('b.status = :status')
+            ->setParameter('start', $start)
+            ->setParameter('end', $end)
+            ->setParameter('foodTruck', $foodTruck)
+            ->setParameter('campus', $campus)
+            ->setParameter('status', BookingStatusEnum::confirmed->name)
+            ->getQuery()
+            ->getSingleScalarResult() > 0
         ;
     }
 }

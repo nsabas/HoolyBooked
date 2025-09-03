@@ -20,7 +20,7 @@ class ListFoodTruckHandler
     public function handle(ListFoodTruckQuery $foodTruckQuery): array
     {
         return FoodTruckDTOFactory::createFromArray(
-            $this->databasePort->findByType($foodTruckQuery->getQueryParams())
+            $this->databasePort->findAll()
         );
     }
 }

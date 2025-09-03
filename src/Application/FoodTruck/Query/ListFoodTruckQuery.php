@@ -4,12 +4,9 @@ namespace App\Application\FoodTruck\Query;
 
 class ListFoodTruckQuery
 {
+    /**
+     * Add property to filter by them
+     */
     public function __construct(
-        public ?string $type = null
     ) {}
-
-    public function getQueryParams(): array
-    {
-        return get_object_vars($this);
-    }
 }

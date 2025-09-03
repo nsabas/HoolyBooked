@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Routing\Attribute\Route;
+use OpenApi\Attributes as OA;
 
 class UpdateStatusBookingController extends AbstractController
 {
@@ -19,6 +20,9 @@ class UpdateStatusBookingController extends AbstractController
         private readonly UpdateStatusHandler $updateStatusHandler
     ) {}
 
+    #[OA\Patch(
+        tags: ['Booking']
+    )]
     #[Route('/api/reservations/{uid}', name: 'api_update_status_booking', methods: [Request::METHOD_PATCH])]
     public function index(string $uid, #[MapRequestPayload] UpdateStatusBookingCommand $updateStatusBookingCommand): JsonResponse
     {

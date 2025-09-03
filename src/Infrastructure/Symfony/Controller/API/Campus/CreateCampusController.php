@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Routing\Attribute\Route;
+use OpenApi\Attributes as OA;
 
 class CreateCampusController extends AbstractController
 {
@@ -19,6 +20,9 @@ class CreateCampusController extends AbstractController
         private CreateCampusHandler $createCampusHandler
     ) {}
 
+    #[OA\Post(
+        tags: ['Campus']
+    )]
     #[Route('/api/campus', name: 'api_campus_create', methods: [Request::METHOD_POST])]
     public function __invoke(#[MapRequestPayload] CreateCampusCommand $createCampusCommand): JsonResponse
     {

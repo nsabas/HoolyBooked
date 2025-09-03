@@ -56,8 +56,7 @@ docker-compose exec php composer install
 
 ### 4️⃣ Créer la base de données et lancer les migrations
 ```bash
-docker compose exec php bin/console doctrine:database:create --if-not-exists
-docker compose exec php bin/console doctrine:migrations:migrate -n
+make init_db
 ```
 
 ---
